@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { MONGODB_URI } = process.env;
 const request = require("supertest");
-const app = require("../app");
+const app = require("../../app");
 const mongoose = require("mongoose");
 const trips = require("../../models/tripModel");
 
