@@ -40,4 +40,17 @@ router.put("/:tripId", async (req, res) => {
   }
 });
 
+router.delete("/:tripId", async (req, res) => {
+  const { tripId } = req.params;
+  try {
+    const response = await trips.findByIdAndDelete(tripId);
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({
+      error: error,
+      msg: "Hubo un error",
+    });
+  }
+});
+
 module.exports = router;
