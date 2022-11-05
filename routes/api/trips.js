@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const trips = require("../../models/tripModel");
+const connection = require("../../config/Database");
 
 router.get("/", async (req, res) => {
   try {
@@ -14,6 +15,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  const { name, description, destination, category, startDate, endDate } =
+    req.body;
   try {
     const newTrip = await trips.create(req.body);
     res.json(newTrip);
